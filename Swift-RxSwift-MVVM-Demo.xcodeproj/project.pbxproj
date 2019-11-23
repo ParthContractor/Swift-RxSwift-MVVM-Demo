@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		B2EF7D782389287E004565D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF7D772389287E004565D3 /* AppDelegate.swift */; };
-		B2EF7D7A2389287E004565D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF7D792389287E004565D3 /* SceneDelegate.swift */; };
-		B2EF7D7C2389287E004565D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF7D7B2389287E004565D3 /* ViewController.swift */; };
-		B2EF7D7F2389287E004565D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2EF7D7D2389287E004565D3 /* Main.storyboard */; };
+		B2EF7D7C2389287E004565D3 /* LaunchesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF7D7B2389287E004565D3 /* LaunchesListVC.swift */; };
 		B2EF7D8123892880004565D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2EF7D8023892880004565D3 /* Assets.xcassets */; };
 		B2EF7D8423892880004565D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2EF7D8223892880004565D3 /* LaunchScreen.storyboard */; };
 		B2EF7D8F23892881004565D3 /* Swift_RxSwift_MVVM_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF7D8E23892881004565D3 /* Swift_RxSwift_MVVM_DemoTests.swift */; };
 		B2EF7D9A23892881004565D3 /* Swift_RxSwift_MVVM_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF7D9923892881004565D3 /* Swift_RxSwift_MVVM_DemoUITests.swift */; };
+		B2EF7DA823894F97004565D3 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = B2EF7DA723894F97004565D3 /* Readme.md */; };
+		B2EF7DAB238957BA004565D3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EF7DAA238957BA004565D3 /* RxSwift.framework */; };
+		B2EF7DAC238957BA004565D3 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2EF7DAA238957BA004565D3 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B2EF7DB023895C85004565D3 /* LaunchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF7DAF23895C84004565D3 /* LaunchesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,12 +36,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B2EF7DAD238957BA004565D3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B2EF7DAC238957BA004565D3 /* RxSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B2EF7D742389287E004565D3 /* Swift-RxSwift-MVVM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-RxSwift-MVVM-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2EF7D772389287E004565D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B2EF7D792389287E004565D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B2EF7D7B2389287E004565D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B2EF7D7E2389287E004565D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B2EF7D7B2389287E004565D3 /* LaunchesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListVC.swift; sourceTree = "<group>"; };
 		B2EF7D8023892880004565D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2EF7D8323892880004565D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2EF7D8523892880004565D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +63,9 @@
 		B2EF7D9523892881004565D3 /* Swift-RxSwift-MVVM-DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift-RxSwift-MVVM-DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2EF7D9923892881004565D3 /* Swift_RxSwift_MVVM_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_RxSwift_MVVM_DemoUITests.swift; sourceTree = "<group>"; };
 		B2EF7D9B23892881004565D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2EF7DA723894F97004565D3 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		B2EF7DAA238957BA004565D3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		B2EF7DAF23895C84004565D3 /* LaunchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2EF7DAB238957BA004565D3 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,10 +97,12 @@
 		B2EF7D6B2389287E004565D3 = {
 			isa = PBXGroup;
 			children = (
+				B2EF7DA723894F97004565D3 /* Readme.md */,
 				B2EF7D762389287E004565D3 /* Swift-RxSwift-MVVM-Demo */,
 				B2EF7D8D23892881004565D3 /* Swift-RxSwift-MVVM-DemoTests */,
 				B2EF7D9823892881004565D3 /* Swift-RxSwift-MVVM-DemoUITests */,
 				B2EF7D752389287E004565D3 /* Products */,
+				B2EF7DA9238957BA004565D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,9 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				B2EF7D772389287E004565D3 /* AppDelegate.swift */,
-				B2EF7D792389287E004565D3 /* SceneDelegate.swift */,
-				B2EF7D7B2389287E004565D3 /* ViewController.swift */,
-				B2EF7D7D2389287E004565D3 /* Main.storyboard */,
+				B2EF7D7B2389287E004565D3 /* LaunchesListVC.swift */,
+				B2EF7DAF23895C84004565D3 /* LaunchesTableViewCell.swift */,
 				B2EF7D8023892880004565D3 /* Assets.xcassets */,
 				B2EF7D8223892880004565D3 /* LaunchScreen.storyboard */,
 				B2EF7D8523892880004565D3 /* Info.plist */,
@@ -128,6 +147,14 @@
 			path = "Swift-RxSwift-MVVM-DemoUITests";
 			sourceTree = "<group>";
 		};
+		B2EF7DA9238957BA004565D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2EF7DAA238957BA004565D3 /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +165,8 @@
 				B2EF7D702389287E004565D3 /* Sources */,
 				B2EF7D712389287E004565D3 /* Frameworks */,
 				B2EF7D722389287E004565D3 /* Resources */,
+				B2EF7DAD238957BA004565D3 /* Embed Frameworks */,
+				B2EF7DAE238958C1004565D3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -234,7 +263,7 @@
 			files = (
 				B2EF7D8423892880004565D3 /* LaunchScreen.storyboard in Resources */,
 				B2EF7D8123892880004565D3 /* Assets.xcassets in Resources */,
-				B2EF7D7F2389287E004565D3 /* Main.storyboard in Resources */,
+				B2EF7DA823894F97004565D3 /* Readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,14 +283,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B2EF7DAE238958C1004565D3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B2EF7D702389287E004565D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2EF7D7C2389287E004565D3 /* ViewController.swift in Sources */,
+				B2EF7DB023895C85004565D3 /* LaunchesTableViewCell.swift in Sources */,
+				B2EF7D7C2389287E004565D3 /* LaunchesListVC.swift in Sources */,
 				B2EF7D782389287E004565D3 /* AppDelegate.swift in Sources */,
-				B2EF7D7A2389287E004565D3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +347,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B2EF7D7D2389287E004565D3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B2EF7D7E2389287E004565D3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B2EF7D8223892880004565D3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -435,7 +477,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Swift-RxSwift-MVVM-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +499,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Swift-RxSwift-MVVM-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
