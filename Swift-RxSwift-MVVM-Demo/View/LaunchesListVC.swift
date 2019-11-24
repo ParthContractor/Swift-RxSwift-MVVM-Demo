@@ -12,6 +12,7 @@ import RxCocoa
 
 class LaunchesListVC: UIViewController {
     private let tableView = UITableView()
+    private let segmentedControl = UISegmentedControl()
     private let cellIdentifier = "launchesCellIdentifier"
     var viewModel = LaunchesListVCViewModel()
     let disposeBag = DisposeBag()
@@ -28,12 +29,29 @@ class LaunchesListVC: UIViewController {
     }
 
     private func initialSetUp() {
+        let items = ["All", "Sort By MissionName", "Sort By LaunchDate", "Filter By Successful Launch"]
+        let customSC = UISegmentedControl(items: items)
+        customSC.tintColor = .red
+        customSC.backgroundColor = UIColor.ThemeColor.navigationBarTintColor
+        customSC.translatesAutoresizingMaskIntoConstraints = false
+        customSC.selectedSegmentIndex = 0
+        view.addSubview(customSC)
+        view.addSubview(tableView)
+        
+        customSC.addTarget(self, action: #selector(LaunchesListVC.segmentedControlChanged(_:)), for: .valueChanged)
+
+        NSLayoutConstraint.activate([
+            customSC.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            customSC.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            customSC.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            customSC.bottomAnchor.constraint(equalTo: tableView.topAnchor)
+        ])
+
         tableView.register(LaunchesTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         navigationItem.title = "SpaceX Launches"
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: customSC.bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -60,6 +78,21 @@ class LaunchesListVC: UIViewController {
             cell.detailTextLabel?.text = "Mission: " + model.missionName
         }
         .disposed(by: disposeBag)
+    }
+    
+    @objc func segmentedControlChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            viewModel.requestData()
+        case 1:
+            viewModel.requestData(.SortByMissionName())
+        case 2:
+            viewModel.requestData(.SortByLaunchDate())
+        case 3:
+            viewModel.requestData(.FilterBySuccessfulLaunch())
+        default:
+            viewModel.requestData()
+        }
     }
 }
 

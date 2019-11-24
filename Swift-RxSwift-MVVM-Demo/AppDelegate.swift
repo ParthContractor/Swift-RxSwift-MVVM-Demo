@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func decorateNavigationBarAppearance() {
         UINavigationBar.appearance().barTintColor = UIColor.ThemeColor.navigationBarTintColor
         UINavigationBar.appearance().tintColor = UIColor.ThemeColor.navigationTintColor
+        UILabel.appearance(whenContainedInInstancesOf: [UISegmentedControl.self]).numberOfLines = 0
     }
 }
 
