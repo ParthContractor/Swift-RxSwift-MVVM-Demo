@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func decorateNavigationBarAppearance() {
-//        UINavigationBar.appearance().barTintColor = UIColor.ThemeColor.navigationBarTintColor
-//        UINavigationBar.appearance().tintColor = UIColor.ThemeColor.navigationTintColor
+        UINavigationBar.appearance().barTintColor = UIColor.ThemeColor.navigationBarTintColor
+        UINavigationBar.appearance().tintColor = UIColor.ThemeColor.navigationTintColor
     }
 }
 
