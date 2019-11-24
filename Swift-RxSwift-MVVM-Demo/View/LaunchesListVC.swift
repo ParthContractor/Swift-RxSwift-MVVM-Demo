@@ -20,6 +20,7 @@ class LaunchesListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "SpaceX Launches"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         initialSetUp()
         viewModel.requestData()
         setupBinding()

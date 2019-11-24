@@ -15,7 +15,7 @@ struct RocketModel: Codable {
     let successRate: Int?
     let country: String?
     let company: String?
-    let costPerLaunch: String?
+    let costPerLaunch: Int?
     let wikipedia: String?
     let description: String?
     let firstFlight: String?
@@ -41,7 +41,7 @@ struct RocketModel: Codable {
 }
 
 struct Height: Codable {
-    let meters: String
+    let meters: Double
 
     enum CodingKeys: String, CodingKey {
         case meters = "meters"
@@ -49,7 +49,7 @@ struct Height: Codable {
 }
 
 struct Diameter: Codable {
-    let meters: String
+    let meters: Double
 
     enum CodingKeys: String, CodingKey {
         case meters = "meters"
@@ -57,7 +57,7 @@ struct Diameter: Codable {
 }
 
 struct Mass: Codable {
-    let kg: String
+    let kg: Double
 
     enum CodingKeys: String, CodingKey {
         case kg = "kg"

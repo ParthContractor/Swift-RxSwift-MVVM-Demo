@@ -30,8 +30,9 @@ class RocketDetailsRequest: APIRequest {
 }
 
 class LauncheDetailsVCViewModel {
-        
-    public let launchDetails : PublishSubject<LaunchModel> = PublishSubject()
+    public let launchDetailsSource : PublishSubject<[Any]> = PublishSubject()
+
+    public let launchDetails : PublishSubject<[LaunchModel]> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
     public let rocketDetails : PublishSubject<RocketModel> = PublishSubject()
 
@@ -51,7 +52,8 @@ class LauncheDetailsVCViewModel {
             
             //result if anything
             if let result = result {
-                self.launchDetails.onNext(result)
+                self.requestRocketData(rocketId: result.rocket.rocketId)
+                self.launchDetails.onNext([result])
             }
         })
     }
