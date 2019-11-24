@@ -11,6 +11,7 @@ import UIKit
 
 struct AppConstants {
     static let baseURL = URL(string: "https://api.spacexdata.com/v3/")!
+    static let dataUnAvailable = "N/A"
 }
 extension UIFont {
     struct ThemeFont {

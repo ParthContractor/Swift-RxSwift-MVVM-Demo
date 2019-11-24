@@ -30,17 +30,16 @@ class RocketDetailsRequest: APIRequest {
 }
 
 class LauncheDetailsVCViewModel {
-    public let launchDetailsSource : PublishSubject<[Any]> = PublishSubject()
-
-    public let launchDetails : PublishSubject<[LaunchModel]> = PublishSubject()
+    public let launchDetailsSource : PublishSubject<[(LaunchModel,RocketModel)]> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
-    public let rocketDetails : PublishSubject<RocketModel> = PublishSubject()
+    public let loading: PublishSubject<Bool> = PublishSubject()
 
     private let disposable = DisposeBag()
     
     private let apiClient = APIClient()
 
     public func requestLaunchData(flightNumber: Int) {
+        self.loading.onNext(true)
         let apiRequestSetUp = LaunchDetailsRequest(flightNumber: flightNumber)
         let apiReq = apiRequestSetUp.request(with: AppConstants.baseURL)
         
@@ -52,17 +51,17 @@ class LauncheDetailsVCViewModel {
             
             //result if anything
             if let result = result {
-                self.requestRocketData(rocketId: result.rocket.rocketId)
-                self.launchDetails.onNext([result])
+                self.requestRocketData(rocketId: result.rocket.rocketId, launchDetails: result)
             }
         })
     }
     
-    public func requestRocketData(rocketId: String) {
+    public func requestRocketData(rocketId: String, launchDetails: LaunchModel? = nil) {
         let apiRequestSetUp = RocketDetailsRequest(rocketId: rocketId)
         let apiReq = apiRequestSetUp.request(with: AppConstants.baseURL)
         
         APIClient.requestData(responseObjeType:RocketModel.self, apiRequest: apiReq, completionHandler: { result,error  in
+            self.loading.onNext(false)
             //Error if any
             if let err = error {
                 self.error.onNext(err.localizedDescription)
@@ -70,7 +69,9 @@ class LauncheDetailsVCViewModel {
             
             //result if anything
             if let result = result {
-                self.rocketDetails.onNext(result)
+                if let launchModel = launchDetails {
+                    self.launchDetailsSource.onNext([(launchModel,result)])
+                }
             }
         })
     }
