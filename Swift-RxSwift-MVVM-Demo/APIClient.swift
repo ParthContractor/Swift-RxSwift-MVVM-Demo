@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 
 class APIClient {
     static func requestData<T: Codable>(responseObjeType: T.Type, apiRequest: URLRequest, completionHandler: @escaping (_ result:T?,_ error:Error?) -> Void) {
