@@ -9,10 +9,35 @@
 import RxSwift
 import RxCocoa
 
+enum QueryData {
+    case ALL(_ data: [String: String] = [String: String]())
+    case SortByMissionName(data: [String: String] = ["sort": "mission_name","order": "asc"])
+    case SortByLaunchDate(data: [String: String] = ["sort": "launch_date_utc","order": "launch_year"])
+    case FilterBySuccessfulLaunch(data: [String: String] = ["launch_success": "true"])
+    
+
+    func associatedValue() -> [String: String] {
+      switch self {
+      case .ALL(let value):
+        return value
+      case .SortByMissionName(let value):
+        return value
+      case .SortByLaunchDate(let value):
+        return value
+      case .FilterBySuccessfulLaunch(let value):
+        return value
+      }
+    }
+}
+
 class LaunchesRequest: APIRequest {
     var method = RequestType.GET
     var path = "launches"
     var parameters = [String: String]()
+    
+    init(params: [String: String]) {
+        self.parameters = params
+    }
 }
 
 class LaunchesListVCViewModel {
@@ -24,8 +49,8 @@ class LaunchesListVCViewModel {
     
     private let apiClient = APIClient()
 
-    public func requestData(){
-        let apiRequestSetUp = LaunchesRequest()
+    public func requestData(_ queryData: QueryData = .ALL()){
+        let apiRequestSetUp = LaunchesRequest(params: queryData.associatedValue())
         let apiReq = apiRequestSetUp.request(with: AppConstants.baseURL)
         
         APIClient.requestData(responseObjeType:[LaunchModel].self, apiRequest: apiReq, completionHandler: { result,error  in

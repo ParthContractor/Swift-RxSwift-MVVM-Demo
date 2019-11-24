@@ -15,6 +15,7 @@ struct AppConstants {
 extension UIFont {
     struct ThemeFont {
         static let titleFont = UIFont.systemFont(ofSize: 22)
+        static let subTitleFont = UIFont.systemFont(ofSize: 20)
     }
 }
 extension UIColor {
@@ -22,5 +23,6 @@ extension UIColor {
         static let navigationBarTintColor = UIColor.orange
         static let navigationTintColor = UIColor.yellow
         static let titleColor = UIColor.orange
+        static let subTitleColor = UIColor.green
     }
 }

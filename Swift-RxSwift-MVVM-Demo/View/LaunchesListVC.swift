@@ -58,7 +58,6 @@ class LaunchesListVC: UIViewController {
         .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier)) { index, model, cell in
             cell.textLabel?.text = "Flight Num: " + "\(model.flightNumber)"
             cell.detailTextLabel?.text = "Mission: " + model.missionName
-            cell.textLabel?.adjustsFontSizeToFitWidth = true
         }
         .disposed(by: disposeBag)
     }
