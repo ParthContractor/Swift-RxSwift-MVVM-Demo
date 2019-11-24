@@ -44,16 +44,19 @@ class LaunchesListVCViewModel {
         
     public let launches : PublishSubject<[LaunchModel]> = PublishSubject()
     public let error : PublishSubject<String> = PublishSubject()
+    public let loading: PublishSubject<Bool> = PublishSubject()
 
     private let disposable = DisposeBag()
     
     private let apiClient = APIClient()
 
     public func requestData(_ queryData: QueryData = .ALL()){
+        self.loading.onNext(true)
         let apiRequestSetUp = LaunchesRequest(params: queryData.associatedValue())
         let apiReq = apiRequestSetUp.request(with: AppConstants.baseURL)
         
         APIClient.requestData(responseObjeType:[LaunchModel].self, apiRequest: apiReq, completionHandler: { result,error  in
+            self.loading.onNext(false)
             //Error if any
             if let err = error {
                 self.error.onNext(err.localizedDescription)

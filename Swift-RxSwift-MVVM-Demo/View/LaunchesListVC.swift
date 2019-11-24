@@ -56,6 +56,9 @@ class LaunchesListVC: UIViewController {
     }
     
     private func setupBinding() {
+        viewModel.loading
+            .bind(to: self.rx.isAnimating).disposed(by: disposeBag)
+
        // observing errors to show
         viewModel
             .error
