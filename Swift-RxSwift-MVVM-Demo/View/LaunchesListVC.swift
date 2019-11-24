@@ -12,12 +12,12 @@ import RxCocoa
 
 class LaunchesListVC: UIViewController {
     private let tableView = UITableView()
-    private let segmentedControl = UISegmentedControl()
+    private var segmentedControl : UISegmentedControl!
     private let cellIdentifier = "launchesCellIdentifier"
     var viewModel = LaunchesListVCViewModel()
     let disposeBag = DisposeBag()
     
-    // MARK: - Iitial Setup
+    // MARK: - Initial Setup
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "SpaceX Launches"
@@ -29,32 +29,20 @@ class LaunchesListVC: UIViewController {
     
     private func initialSetUp() {
         let items = ["All", "Sort By MissionName", "Sort By LaunchDate", "Successful Launches"]
-        let customSC = UISegmentedControl(items: items)
-        customSC.tintColor = .red
-        customSC.backgroundColor = UIColor.ThemeColor.navigationBarTintColor
-        customSC.translatesAutoresizingMaskIntoConstraints = false
-        customSC.selectedSegmentIndex = 0
-        view.addSubview(customSC)
+        segmentedControl = UISegmentedControl(items: items)
+        segmentedControl.tintColor = .red
+        segmentedControl.backgroundColor = UIColor.ThemeColor.navigationBarTintColor
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.selectedSegmentIndex = 0
+        view.addSubview(segmentedControl)
         view.addSubview(tableView)
         
-        customSC.addTarget(self, action: #selector(LaunchesListVC.segmentedControlChanged(_:)), for: .valueChanged)
-        
-        NSLayoutConstraint.activate([
-            customSC.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            customSC.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            customSC.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            customSC.bottomAnchor.constraint(equalTo: tableView.topAnchor)
-        ])
-        
-        tableView.register(LaunchesTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: customSC.bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        tableView.contentInset.bottom = view.safeAreaInsets.bottom
+        segmentedControl.addTarget(self, action: #selector(LaunchesListVC.segmentedControlChanged(_:)), for: .valueChanged)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        layoutAndConstraintsSetup()
     }
     
     // MARK: - Actions/Events
@@ -116,11 +104,29 @@ class LaunchesListVC: UIViewController {
         // selecting launch and navigate to details
         tableView.rx.modelSelected(LaunchModel.self)
             .subscribe(onNext: { item in
-                print(item)
                 let launchesListVC = LauncheDetailsVC(flightNumber: item.flightNumber)
                 self.navigationController?.pushViewController(launchesListVC, animated: true)
             })
             .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Layout and constraints setup
+    private func layoutAndConstraintsSetup() {
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            segmentedControl.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            segmentedControl.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            segmentedControl.bottomAnchor.constraint(equalTo: tableView.topAnchor)
+        ])
+        tableView.register(LaunchesTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        tableView.contentInset.bottom = view.safeAreaInsets.bottom
     }
 }
 

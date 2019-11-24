@@ -30,7 +30,7 @@ class LauncheDetailsVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Iitial Setup
+    // MARK: - Initial Setup
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetUp()
@@ -45,16 +45,13 @@ class LauncheDetailsVC: UIViewController {
         view.addSubview(tableView)
         self.tableView.tableFooterView = UIView()
         tableView.register(LauncheDetailsTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        tableView.contentInset.bottom = view.safeAreaInsets.bottom
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        layoutAndConstraintsSetup()
+    }
+
     // MARK: - Bindings
     private func setupBinding() {
         // loading indicator binding
@@ -126,4 +123,17 @@ class LauncheDetailsVC: UIViewController {
         }
         .disposed(by: disposeBag)
     }
+    
+    // MARK: - Layout and constraints setup
+    private func layoutAndConstraintsSetup() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        tableView.contentInset.bottom = view.safeAreaInsets.bottom
+    }
+
 }
