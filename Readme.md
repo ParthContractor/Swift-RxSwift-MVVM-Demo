@@ -33,4 +33,6 @@ for the assignment.
 * Deployment target: iOS 11
 * Supported devices: iPad and iPhone
 * Xcode  version used: 11.1
-
+* Assumptions
+  * No CACHING OR LOCAL STORAGE required
+  * No higher order functions should be used for sorting/grouping rather relying on SpaceX API directly
