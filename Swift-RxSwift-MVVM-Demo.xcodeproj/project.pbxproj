@@ -26,6 +26,7 @@
 		B2EF7DC0238A4ACB004565D3 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2EF7DBE238A4ACB004565D3 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B2EF7DC4238A4D2F004565D3 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EF7DC3238A4D2F004565D3 /* RxRelay.framework */; };
 		B2EF7DC5238A4D2F004565D3 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2EF7DC3238A4D2F004565D3 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B2EF7DC7238A552A004565D3 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF7DC6238A552A004565D3 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		B2EF7DBC238A08C7004565D3 /* LaunchesListVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListVCViewModel.swift; sourceTree = "<group>"; };
 		B2EF7DBE238A4ACB004565D3 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		B2EF7DC3238A4D2F004565D3 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		B2EF7DC6238A552A004565D3 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				B2EF7DB4238966CB004565D3 /* Constants.swift */,
 				B2EF7DB6238A0317004565D3 /* APIClient.swift */,
 				B2EF7DB7238A0318004565D3 /* APIRequest.swift */,
+				B2EF7DC6238A552A004565D3 /* UIViewControllerExtension.swift */,
 				B2EF7DB123896656004565D3 /* Model */,
 				B2EF7DB223896656004565D3 /* View */,
 				B2EF7DB323896656004565D3 /* ViewModel */,
@@ -364,6 +367,7 @@
 			files = (
 				B2EF7DB023895C85004565D3 /* LaunchesTableViewCell.swift in Sources */,
 				B2EF7D7C2389287E004565D3 /* LaunchesListVC.swift in Sources */,
+				B2EF7DC7238A552A004565D3 /* UIViewControllerExtension.swift in Sources */,
 				B2EF7DBB238A0557004565D3 /* LaunchModel.swift in Sources */,
 				B2EF7D782389287E004565D3 /* AppDelegate.swift in Sources */,
 				B2EF7DBD238A08C7004565D3 /* LaunchesListVCViewModel.swift in Sources */,

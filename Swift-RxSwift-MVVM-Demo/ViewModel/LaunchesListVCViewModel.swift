@@ -18,7 +18,8 @@ class LaunchesRequest: APIRequest {
 class LaunchesListVCViewModel {
         
     public let launches : PublishSubject<[LaunchModel]> = PublishSubject()
-    
+    public let error : PublishSubject<String> = PublishSubject()
+
     private let disposable = DisposeBag()
     
     private let apiClient = APIClient()
@@ -29,8 +30,8 @@ class LaunchesListVCViewModel {
         
         APIClient.requestData(responseObjeType:[LaunchModel].self, apiRequest: apiReq, completionHandler: { result,error  in
             //Error if any
-            if let _ = error {
-                print("error")
+            if let err = error {
+                self.error.onNext(err.localizedDescription)
             }
             
             //result if anything

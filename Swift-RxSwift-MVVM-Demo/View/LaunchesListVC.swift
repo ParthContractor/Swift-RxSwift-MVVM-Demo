@@ -42,6 +42,16 @@ class LaunchesListVC: UIViewController {
     }
     
     private func setupBinding() {
+       // observing errors to show
+        viewModel
+            .error
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { (error) in
+                self.presentAlert(withTitle: "SpaceX Launches", message: error)
+                })
+            .disposed(by: disposeBag)
+
+        // binding data to tableview
         viewModel
         .launches
         .observeOn(MainScheduler.instance)
