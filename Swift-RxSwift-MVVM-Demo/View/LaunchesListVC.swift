@@ -19,17 +19,14 @@ class LaunchesListVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "SpaceX Launches"
         initialSetUp()
         viewModel.requestData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         setupBinding()
     }
 
     private func initialSetUp() {
-        let items = ["All", "Sort By MissionName", "Sort By LaunchDate", "Filter By Successful Launch"]
+        let items = ["All", "Sort By MissionName", "Sort By LaunchDate", "Successful Launches"]
         let customSC = UISegmentedControl(items: items)
         customSC.tintColor = .red
         customSC.backgroundColor = UIColor.ThemeColor.navigationBarTintColor
@@ -48,7 +45,6 @@ class LaunchesListVC: UIViewController {
         ])
 
         tableView.register(LaunchesTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        navigationItem.title = "SpaceX Launches"
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: customSC.bottomAnchor),
@@ -78,9 +74,25 @@ class LaunchesListVC: UIViewController {
             cell.detailTextLabel?.text = "Mission: " + model.missionName
         }
         .disposed(by: disposeBag)
+        
+        //Deselect row
+        tableView.rx.itemSelected
+        .subscribe(onNext: { [weak self] indexPath in
+            self?.tableView.deselectRow(at: indexPath, animated: true)
+        }).disposed(by: disposeBag)
+
+        
+        // selecting launch and navigate to details
+        tableView.rx.modelSelected(LaunchModel.self)
+            .subscribe(onNext: { item in
+                print(item)
+                let launchesListVC = LauncheDetailsVC(flightNumber: item.flightNumber)
+                self.navigationController?.pushViewController(launchesListVC, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
-    @objc func segmentedControlChanged(_ sender: UISegmentedControl) {
+    @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             viewModel.requestData()
