@@ -21,14 +21,15 @@ Bonus points:
 
 
 <---Code Overview--->
-•Programming paradigm
-o Combination of Reactive, OOP and POP 
-•Application Architecture
-o MVVM  
-•Dependency
-o RxSwift (https://github.com/ReactiveX/RxSwift) 
-o Framework dependency added through Carthage 
-o Required dependency already checked in to github to start/run the application without carthage update required otherwise 
-•Deployment target: iOS 11
-•Supported devices: iPad and iPhone
-•Xcode  version used: 11.1
+* Programming paradigm
+  * Combination of Reactive, OOP and POP
+* Application Architecture
+  * MVVM
+* Dependency
+  * RxSwift (https://github.com/ReactiveX/RxSwift) 
+  * Framework dependency added through Carthage 
+  * Required dependency already checked in to github to start/run the application without carthage update required otherwise 
+* Deployment target: iOS 11
+* Supported devices: iPad and iPhone
+* Xcode  version used: 11.1
+
